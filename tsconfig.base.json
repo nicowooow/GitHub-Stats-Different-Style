@@ -6,6 +6,21 @@
     "strict": true,
     "declaration": true,
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "baseUrl": "./",
+    "paths": {
+      "@core/*": [
+        "packages/core/*"
+      ],
+      "@react/*": [
+        "packages/react/*"
+      ],
+      "@svg/*": [
+        "packages/svg/*"
+      ],
+      "@themes/*": [
+        "packages/themes/*"
+      ]
+    }
   }
 }

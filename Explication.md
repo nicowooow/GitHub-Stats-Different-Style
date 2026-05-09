@@ -1,11 +1,18 @@
 # Explication about the structure
 
 ## Directories
-This is how I’m planning to structure this project as a Node module. This is the structure I’ll follow, although it may change as the project evolves.  
+
+This is how I’m planning to structure this project as a Node module. This is the structure I’ll follow, although it may
+change as the project evolves.
 
 ```bash  
 ├────packages
     ├───core
+    │  └───src
+    │      ├───domain
+    │      ├───infrastructure
+    │      ├───application
+    │      └───ports
     ├───examples
     │   └───react-demo
     ├───react
@@ -15,12 +22,19 @@ This is how I’m planning to structure this project as a Node module. This is t
 ```
 
 - **packages**: Contains all reusable modules and internal packages of the project.
-  - **core**: Contains the main logic of the project, such as utilities, data processing, fetchers, shared types, and renderer-independent functionality.
-  - **examples**: Contains local examples and development playgrounds used to test the packages during development.
-    - **react-demo**: Small React application used to preview and test components and rendering behavior in real time.
-  - **react**: Contains reusable React components and React-specific implementations of the cards and visual elements.
-  - **svg**: Contains the SVG rendering engine and utilities used to generate SVG output dynamically.
-  - **themes**: Contains themes, color palettes, gradients, typography presets, and visual configurations.
+    - **core**: Contains the main logic of the project, such as utilities, data processing, fetchers, shared types, and
+      renderer-independent functionality.
+        - **src**: Contains how it will work.`That's what it is`
+            - **domain**: Contains the rules and types of the project.
+            - **infrastructure**: Contains the responsible logic that interact with the exterior.`What do I need??`
+            - **application**: Contains behavior og the application.`What does it do??`
+            - **ports**: Contains the interfaces.`How do I get it?`
+    - **examples**: Contains local examples and development playgrounds used to test the packages during development.
+        - **react-demo**: Small React application used to preview and test components and rendering behavior in real
+          time.
+    - **react**: Contains reusable React components and React-specific implementations of the cards and visual elements.
+    - **svg**: Contains the SVG rendering engine and utilities used to generate SVG output dynamically.
+    - **themes**: Contains themes, color palettes, gradients, typography presets, and visual configurations.
 
 ## Files
 
@@ -37,16 +51,17 @@ how each script works...
 ````Bash
 pnpm --parallel --filter @github-stats-different/* ... dev
 ````
+
 `--parallel`: Runs all package dev scripts at the same time.
 
 `--filter ...`: Targets only packages that have a dev script defined.
-
 
 - **build**
 
 ````Bash
 pnpm --recursive --filter @github-stats-different/* ... build
 ````
+
 `--recursive`: Runs the command in every package found in the workspace.
 
 `--filter ...`: Includes only packages that have a build script.
@@ -56,8 +71,8 @@ pnpm --recursive --filter @github-stats-different/* ... build
 ````Bash
 pnpm --filter core dev
 ````
-`--filter ...`: Executes the dev script specifically for the package named core.
 
+`--filter ...`: Executes the dev script specifically for the package named core.
 
 ### pnpm-lock.yaml
 
